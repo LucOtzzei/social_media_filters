@@ -4,7 +4,7 @@ import numpy as np
 import os
 import time
 
-# --- caminhos dos modelos e filtros ---
+#  caminhos dos modelos e filtros 
 MODELS_PATH = "models/"
 FILTERS_PATH = "filters/"
 
@@ -15,13 +15,13 @@ def load_img(name):
         print(f"não achei {name}")
     return img  # sem redimensionamento aqui
 
-# --- carrega os filtros ---
+#  carrega os filtros 
 glasses = load_img("glasses.png")
 moust = load_img("moustache.png")
 mask = load_img("mask.png")
 crown = load_img("crown.png")
 
-# --- inicializa mediapipe ---
+#  inicializa mediapipe 
 BaseOptions = mp.tasks.BaseOptions
 VisionMode = mp.tasks.vision.RunningMode
 
@@ -75,7 +75,7 @@ def overlay_transparent(frame, filt, x, y, scale=1):
 
     return frame
 
-# --- captura da webcam ---
+#  captura da webcam 
 cap = cv2.VideoCapture(0)
 
 with mp.tasks.vision.FaceLandmarker.create_from_options(face_opts) as face_det, \
