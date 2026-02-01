@@ -1,0 +1,11 @@
+# python
+__pycache__/
+*.pyc
+.env
+.venv/
+
+# models grandes
+models/*.task
+
+# sistema
+.DS_Store
