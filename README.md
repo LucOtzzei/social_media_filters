@@ -55,24 +55,38 @@ https://developers.google.com/mediapipe
 Expected structure:
 
 models/
+
 ├── face_landmarker.task
+
 └── gesture_recognizer.task
 ### 4️⃣ Run the project
 python main.py
 Press q to quit.
 
 📁 Project Structure
+
 face-gesture-filter/
+
 ├── filters/
+
 │   ├── glasses.png
+
 │   ├── moustache.png
+
 │   ├── mask.png
+
 │   └── crown.png
+
 ├── models/
+
 │   └── (MediaPipe .task models – not versioned)
+
 ├── main.py
+
 ├── requirements.txt
+
 ├── README.md
+
 └── .gitignore
 
 😅 Notes & Lessons Learned
