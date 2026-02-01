@@ -108,7 +108,7 @@ with mp.tasks.vision.FaceLandmarker.create_from_options(face_opts) as face_det, 
 
             if active_gesture == "Victory":
                 # mascara centralizada no nariz
-                w_target = d_eyes * 2.8
+                w_target = d_eyes * 2.8 
                 sc = w_target / mask.shape[1]
                 x = int(f[1].x*w_fr - (mask.shape[1]*sc/2))
                 y = int(f[1].y*h_fr - (mask.shape[0]*sc/2))
@@ -126,14 +126,25 @@ with mp.tasks.vision.FaceLandmarker.create_from_options(face_opts) as face_det, 
                 # aoculos sobre os olhos
                 lx, rx = f[33], f[263]
                 cx, cy = int((lx.x+rx.x)/2*w_fr), int((lx.y+rx.y)/2*h_fr)
-                sc = (d_eyes*2.2)/glasses.shape[1]
+                sc = (d_eyes*2.0)/glasses.shape[1]
                 frame = overlay_transparent(frame, glasses, int(cx-(glasses.shape[1]*sc/2)), int(cy-(glasses.shape[0]*sc/2)), sc)
 
                 # bigode entre nariz e boca
                 nose, lip = f[1], f[164]
-                cx_m, cy_m = int(nose.x*w_fr), int((nose.y+lip.y)/2*h_fr)
-                sc_m = (d_eyes*1.2)/moust.shape[1]
-                frame = overlay_transparent(frame, moust, int(cx_m-(moust.shape[1]*sc_m/2)), int(cy_m-(moust.shape[0]*sc_m/2)), sc_m)
+
+                cx_m = int(nose.x * w_fr)
+                cy_m = int((nose.y*0.6 + lip.y*0.5) * h_fr)
+
+                sc_m = (d_eyes * 1.2) / moust.shape[1]
+
+                frame = overlay_transparent(
+                    frame,
+                    moust,
+                    int(cx_m - (moust.shape[1] * sc_m / 2)),
+                    int(cy_m - (moust.shape[0] * sc_m / 2)),
+                    sc_m
+                )
+
 
         # mostra resultado final
         cv2.imshow("Filtro", frame)
