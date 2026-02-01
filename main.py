@@ -108,7 +108,7 @@ with mp.tasks.vision.FaceLandmarker.create_from_options(face_opts) as face_det, 
 
             if active_gesture == "Victory":
                 # mascara centralizada no nariz
-                w_target = d_eyes * 3.5  # antes era 2.8
+                w_target = d_eyes * 2.8
                 sc = w_target / mask.shape[1]
                 x = int(f[1].x*w_fr - (mask.shape[1]*sc/2))
                 y = int(f[1].y*h_fr - (mask.shape[0]*sc/2))
@@ -116,7 +116,7 @@ with mp.tasks.vision.FaceLandmarker.create_from_options(face_opts) as face_det, 
 
             elif active_gesture == "Thumb_Up":
                 # coroa na cabeça
-                w_target = d_eyes * 3.0  # antes era 2.5
+                w_target = d_eyes * 2.5
                 sc = w_target / crown.shape[1]
                 x = int(f[10].x*w_fr - (crown.shape[1]*sc/2))
                 y = int(f[10].y*h_fr - (crown.shape[0]*sc))
